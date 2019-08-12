@@ -1,0 +1,54 @@
+body{
+    background: #000000;
+}
+
+#hearth{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:500px; 
+    height: 500px; 
+    margin: 0 auto;
+    background:#ff0000;
+    display: inline-block;
+}
+
+.Patch{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:#ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    opacity: 1;
+}
+
+[tooltip]:before {
+    /* needed - do not touch */
+    content: attr(tooltip);
+    position: absolute;
+    opacity: 0;
+    
+    /* customizable */
+    transition: all 0.15s ease;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px silver;    
+}
+
+[tooltip]:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+    
+    /* customizable */
+    background: black;
+    margin-top: -50px;
+    margin-left: 20px;    
+}
+
+[tooltip]:not([tooltip-persistent]):before {
+    pointer-events: none;
+}
