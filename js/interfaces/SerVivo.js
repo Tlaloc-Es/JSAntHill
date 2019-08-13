@@ -1,12 +1,10 @@
-/*import Dibujable from './Dibujable'
-
-export default*/ class SerVivo extends Dibujable{
+class SerVivo extends Drawable{
     constructor(width, height, left, top, color, health, resistance, focalDistance, reproductionCapacity, totalAttemptsToReproduceIt) {
-        super(width, height, left, top, color);
+        super(width, height, left, top, color)
         this.setAttributes(10 ,10, 10)
-        this.setCanvasDirection();
+        this.setCanvasDirection()
         this.setAngle(0)
-        this.isDead = false;
+        this.isDead = false
 
         if(totalAttemptsToReproduceIt === undefined){ totalAttemptsToReproduceIt = 3}
         if(health === undefined){health = 25}
@@ -27,17 +25,17 @@ export default*/ class SerVivo extends Dibujable{
         this.canvasDirection = document.createElement("canvas")
         this.canvasDirection.style.borderstyle="5px solid"
         this.canvasDirection.style.color="red"  //TODO doesn't work
-        var ctx = this.canvasDirection.getContext("2d");
-        ctx.beginPath();
+        var ctx = this.canvasDirection.getContext("2d")
+        ctx.beginPath()
         let x = this.getWidth() - (this.getWidth()/2)
         let y = this.getHeight() - (this.getHeight()/2)
-        ctx.moveTo(x, y);
+        ctx.moveTo(x, y)
 
         let xy = this.calculateXY(x, y, 360, this.focalDistance)
 
-        ctx.lineTo(xy[0]+x, xy[1]+y);
-        ctx.stroke(); 
-        this.div.appendChild(this.canvasDirection);
+        ctx.lineTo(xy[0]+x, xy[1]+y)
+        ctx.stroke()
+        this.div.appendChild(this.canvasDirection)
     }
 
     birth(){
@@ -65,7 +63,7 @@ export default*/ class SerVivo extends Dibujable{
     checkCollisions(){
         let objects = window.hearth.objects;
         
-        let collidedObjects = [];
+        let collidedObjects = []
 
         let rect1 = {x: this.getLeft(), y: this.getTop(), width: this.getWidth(), height: this.getHeight()}
 
@@ -92,10 +90,10 @@ export default*/ class SerVivo extends Dibujable{
         if(!this.isDead){
             setTimeout(
                 () => {
-                    this.downHealth();
+                    this.downHealth()
                     this.checkCollisions()
-                    this.onMove();
-                    this.move();
+                    this.onMove()
+                    this.move()
                 }, 50);
         }
     }
@@ -103,9 +101,10 @@ export default*/ class SerVivo extends Dibujable{
     onMove(){}
 
     calculateXY(x, y, angle, distance){
-        let toRadians = Math.PI / 180;
-        let x1 = (distance * Math.cos(angle*toRadians))
-        let y1 = (distance * Math.sin(angle*toRadians))
+        let toRadians = Math.PI / 180
+        angle = angle*toRadians
+        let x1 = (distance * Math.cos(angle))
+        let y1 = (distance * Math.sin(angle))
         return [x1, y1]
     }
 
@@ -135,17 +134,6 @@ export default*/ class SerVivo extends Dibujable{
             let reproductionProbability = Math.floor((Math.random() * 100) + 1)
             if(this.reproductionCapacity > reproductionProbability){
 
-                /*new this.constructor(
-                    this.mutate(this.getWidth(), couple.getWidth()),
-                    this.mutate(this.getHeight(), couple.getHeight()),
-                    this.mutate(this.getLeft(), couple.getLeft()),
-                    this.mutate(this.getTop(), couple.getTop()),
-                    this.mutateColor(this.getColor(), couple.getColor()),
-                    this.mutate(this.health, couple.health),
-                    this.mutate(this.resistance, couple.resistance), 
-                    this.mutate(this.focalDistance, couple.focalDistance),
-                    this.mutate(this.reproductionCapacity, couple.reproductionCapacity))*/
-
                 new this.constructor(
                     this.getWidth(),
                     this.getHeight(),
@@ -159,16 +147,14 @@ export default*/ class SerVivo extends Dibujable{
                     this.mutate(this.totalAttemptsToReproduceIt, couple.totalAttemptsToReproduceIt))
 
                     this.health = this.health*0.25
+
             }
         }
         
     }
 
     colorToArray(color){
-        let rgb = color.substring(4, color.length-1)
-         .replace(/ /g, '')
-         .split(',');
-        return rgb
+        return color.substring(4, color.length-1).replace(/ /g, '').split(',')
     }
 
     mutateColor(color1, color2){
@@ -239,9 +225,9 @@ export default*/ class SerVivo extends Dibujable{
     }
 
     downHealth(){
-        this.health--;
+        this.health--
         if(this.health <= 0){
-            this.dead();
+            this.dead()
         }
     }
 

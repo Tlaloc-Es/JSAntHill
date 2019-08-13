@@ -1,15 +1,15 @@
-/* export default*/ class Classeable{
+class Classeable{
     constructor(div){
-        this.div = div;
-        this.setClass();
+        this.div = div
+        this.setClass()
     }
 
     setClass(){
-        this.div.className = this.getType();
+        this.div.className = this.getType()
     }
 
     getType(){
-        return this.constructor.name;
+        return this.constructor.name
     }
 
 }
