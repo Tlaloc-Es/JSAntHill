@@ -24,8 +24,8 @@ class SerVivo extends Drawable{
     setCanvasDirection(){
         this.canvasDirection = document.createElement("canvas")
         this.canvasDirection.style.borderstyle="5px solid"
-        this.canvasDirection.style.color="red"  //TODO doesn't work
         var ctx = this.canvasDirection.getContext("2d")
+        ctx.strokeStyle = "red"
         ctx.beginPath()
         let x = this.getWidth() - (this.getWidth()/2)
         let y = this.getHeight() - (this.getHeight()/2)
