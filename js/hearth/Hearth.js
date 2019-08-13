@@ -9,6 +9,10 @@
         this.height = 500
         this.width = 500
         this.div = document.getElementById('hearth');
+        this.div.onclick = function (e) { 
+            var offset = this.getClientRects()[0];
+            new Ant(10, 10, e.clientX - offset.left, e.clientY - offset.top, "#00FF00");
+        }
         let i = 0
         let j = 0
         for (let index = 0; index < this.height; index=index+10) {

@@ -11,6 +11,7 @@
         this.div.setAttribute('Object', this);
         this.div.setAttribute('Breed', this.getBreed());
         window.hearth.addDibujable(this)
+        this.div.onclick = () => { window.selectDibujable = this }
         this.move();
     }
 
@@ -20,7 +21,7 @@
     }
 
     setColor(color){
-        this.div.style.background = color;
+        this.div.style.backgroundColor = color;
     }
 
     addLeft(steps){
@@ -91,7 +92,7 @@
     }
 
     getColor(){
-        return this.div.style.background;
+        return this.div.style.backgroundColor;
     }
 
     getType(){
